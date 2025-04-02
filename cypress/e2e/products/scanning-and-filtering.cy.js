@@ -3,12 +3,12 @@ describe("Filtering and counting products based on name", () => {
     cy.visit("/products");
   });
 
-  it("navigates to first product with name containing 'blue'", () => {
+  it("navigates to first product with name containing 'Blue'", () => {
     // Act & Assert
     cy.get(".productinfo").each(($el) => {
       const productText = $el.text().toLowerCase();
 
-      if (productText.includes("blue")) {
+      if (productText.includes("Blue")) {
         cy.wrap($el).click();
         cy.url().should("include", "/product_details");
         return false;
