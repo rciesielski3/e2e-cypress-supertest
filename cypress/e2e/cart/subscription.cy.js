@@ -10,7 +10,7 @@ describe("AutomationExercise - Verify Subscription in Cart Page", () => {
     cy.contains("Subscription", { matchCase: false }).should("be.visible");
 
     // Arrange
-    const testEmail = `cart_test_${Date.now()}@example.com`;
+    const testEmail = generateTestEmail("cart-page");
 
     // Act
     cy.get("#susbscribe_email").type(testEmail);
