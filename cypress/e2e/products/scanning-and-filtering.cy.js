@@ -3,23 +3,20 @@ describe("Filtering and counting products based on name", () => {
     cy.visit("/products");
   });
 
-  it("navigates to first product with name containing 'Blue'", () => {
-    // Act & Assert
-    cy.get(".productinfo").each(($el) => {
-      const productText = $el.text().toLowerCase();
+  it("opens the details of the first product with 'Blue' in its name", () => {
+    cy.get(".product-image-wrapper")
+      .filter(':contains("Blue")')
+      .first()
+      .contains("View Product")
+      .click();
 
-      if (productText.includes("Blue")) {
-        cy.wrap($el).click();
-        cy.url().should("include", "/product_details");
-        return false;
-      }
-    });
+    cy.url().should("include", "/product_details");
+    cy.get(".product-information h2").should("contain.text", "Blue");
   });
 
   it("counts how many products contain 'dress' in name", () => {
     let count = 0;
 
-    // Act
     cy.get(".productinfo")
       .each(($el) => {
         if ($el.text().toLowerCase().includes("dress")) {
@@ -27,7 +24,6 @@ describe("Filtering and counting products based on name", () => {
         }
       })
       .then(() => {
-        // Assert
         cy.log(`Found ${count} products containing "dress"`);
         expect(count).to.be.greaterThan(0);
       });

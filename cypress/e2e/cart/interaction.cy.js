@@ -3,18 +3,15 @@ describe("Add to cart flow", () => {
     cy.visit("/products");
   });
 
-  it("adds first product to cart and verifies it in cart page", () => {
-    // Arrange
-    const expectedProductName = "Blue Top";
-
-    // Act
-    cy.get(".product-image-wrapper").first().scrollIntoView();
-    cy.contains("Add to cart").first().click({ force: true });
+  it("adds the first product to the cart and shows it in the cart page", () => {
+    cy.get(".product-image-wrapper")
+      .first()
+      .find(".productinfo .add-to-cart")
+      .click();
     cy.get("#cartModal").should("be.visible");
-    cy.contains("View Cart").click({ force: true });
+    cy.contains("#cartModal a", "View Cart").click();
 
-    // Assert
     cy.url().should("include", "/view_cart");
-    cy.get(".cart_description").should("contain.text", expectedProductName);
+    cy.get(".cart_description").should("contain.text", "Blue Top");
   });
 });

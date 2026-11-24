@@ -1,3 +1,4 @@
 export function generateTestEmail(prefix = "test") {
-  return `${prefix}_${Date.now()}@example.com`;
+  const unique = `${Date.now()}${Math.floor(Math.random() * 1000)}`;
+  return `${prefix}_${unique}@example.com`;
 }

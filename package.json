@@ -1,17 +1,16 @@
 {
   "name": "e2e-cypress-supertest",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run test:api && npm run test:ui:headless",
+    "test:api": "jest",
     "test:ui": "cypress open",
-    "test:ui:headless": "cypress run",
-    "test:api": "jest"
+    "test:ui:headless": "cypress run"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Cypress UI tests (automationexercise.com) and Jest + Supertest API tests (dummyjson.com)",
   "devDependencies": {
     "cypress": "^14.2.1",
     "cypress-file-upload": "^5.0.8",
