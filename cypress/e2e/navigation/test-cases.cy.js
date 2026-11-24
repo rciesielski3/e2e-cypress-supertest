@@ -1,16 +1,11 @@
 describe("Test cases page navigation", () => {
-  it("navigates to Test Cases page from homepage", () => {
-    // Arrange
+  it("navigates to the Test Cases page from the homepage", () => {
     cy.visit("/");
-
-    // Assert
-    cy.url().should("eq", "https://automationexercise.com/");
+    cy.location("pathname").should("eq", "/");
     cy.get(".shop-menu").should("be.visible");
 
-    // Act
     cy.contains("Test Cases").click();
 
-    // Assert
     cy.url().should("include", "/test_cases");
     cy.get(".title").should("contain.text", "Test Cases");
   });
