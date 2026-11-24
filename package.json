@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "description": "Cypress UI tests (automationexercise.com) and Jest + Supertest API tests (dummyjson.com)",
   "devDependencies": {
     "cypress": "^14.2.1",
